@@ -1,15 +1,13 @@
-import React, { useState, useEffect } from 'react'
-import BlogItem from './BlogItem'
-import Panigation from '~/components/Panigation'
-import { SmallAddIcon, SearchIcon } from '@chakra-ui/icons'
-import { useNavigate } from 'react-router-dom'
+import { SearchIcon } from '@chakra-ui/icons'
+import { useEffect, useState } from 'react'
 import axios from '~/api/axios'
 import LoadingPage from '~/components/LoadingPage'
+import Panigation from '~/components/Panigation'
+import BlogItem from './BlogItem'
 
-type Props = {}
 type Blogs = TBlog[]
 
-const Blogs = (props: Props) => {
+const Blogs = () => {
   const [data, setData] = useState<Blogs>([])
   const [loading, setLoading] = useState(false)
 

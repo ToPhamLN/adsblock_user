@@ -1,16 +1,15 @@
-import React, { useState } from 'react'
+import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
 import {
-  Button,
-  Flex,
   Box,
+  Flex,
   IconButton,
   NumberInput,
   NumberInputField
 } from '@chakra-ui/react'
-import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
+import { useState } from 'react'
 
 type Props = {
-  totalPages: number
+  totalPages?: number
 }
 
 const Pagination = ({ totalPages = 10 }: Props) => {
@@ -25,6 +24,8 @@ const Pagination = ({ totalPages = 10 }: Props) => {
   }
 
   const handlePageChange = (valueAsString: string, valueAsNumber: number) => {
+    console.log(valueAsString)
+
     if (valueAsNumber >= 1 && valueAsNumber <= totalPages) {
       setCurrentPage(valueAsNumber)
     }

@@ -26,7 +26,7 @@ const BlogInfo = () => {
       }
     }
     getBlog()
-  }, [])
+  }, [_id])
   return (
     <>
       {loading ? (

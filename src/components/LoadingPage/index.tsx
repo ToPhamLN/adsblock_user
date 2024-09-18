@@ -1,4 +1,3 @@
-import React from 'react'
 import { Box, Spinner, Text, Center } from '@chakra-ui/react'
 
 const LoadingPage = () => {

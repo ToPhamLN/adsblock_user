@@ -3,11 +3,11 @@ import { useSearchParams, useNavigate } from 'react-router-dom'
 import axios from '~/api/axios'
 import { motion } from 'framer-motion'
 
-type Props = {}
 type Categories = TCategory[]
 
-const Navbar = (props: Props) => {
+const Navbar = () => {
   const [categories, setCategories] = useState<Categories>([])
+
   const [searchParams, setSearchParams] = useSearchParams()
   const category = searchParams.get('category')
   const navigate = useNavigate()
@@ -33,6 +33,7 @@ const Navbar = (props: Props) => {
   }, [categories])
 
   const categoryHandler = (value: string) => {
+    console.log(setSearchParams)
     navigate({
       pathname: '/',
       search: `?category=${value}`

@@ -1,7 +1,6 @@
-import React from 'react'
-import { BASE_URL } from '~/api/axios'
-import { Link } from 'react-router-dom'
 import { ViewIcon } from '@chakra-ui/icons'
+import { Link } from 'react-router-dom'
+import { BASE_URL } from '~/api/axios'
 import { formatDate } from '~/utils/helper'
 
 type Blog = TBlog
