@@ -6,28 +6,32 @@ import {
   NumberInput,
   NumberInputField
 } from '@chakra-ui/react'
-import { useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 
 type Props = {
   totalPages?: number
 }
 
 const Pagination = ({ totalPages = 10 }: Props) => {
-  const [currentPage, setCurrentPage] = useState(1)
+  const [searchParams, setSearchParams] = useSearchParams()
+  const currentPage = Number(searchParams.get('page')) || 1
 
   const goToNextPage = () => {
-    setCurrentPage((prev) => (prev < totalPages ? prev + 1 : prev))
+    if (currentPage < totalPages) {
+      setSearchParams({ page: (currentPage + 1).toString() })
+    }
   }
 
   const goToPreviousPage = () => {
-    setCurrentPage((prev) => (prev > 1 ? prev - 1 : prev))
+    if (currentPage > 1) {
+      setSearchParams({ page: (currentPage - 1).toString() })
+    }
   }
 
   const handlePageChange = (valueAsString: string, valueAsNumber: number) => {
     console.log(valueAsString)
-
     if (valueAsNumber >= 1 && valueAsNumber <= totalPages) {
-      setCurrentPage(valueAsNumber)
+      setSearchParams({ page: valueAsNumber.toString() })
     }
   }
 
@@ -54,7 +58,6 @@ const Pagination = ({ totalPages = 10 }: Props) => {
           </NumberInput>
         </Box>
 
-        {/* Nút Next */}
         <IconButton
           icon={<ChevronRightIcon />}
           onClick={goToNextPage}
